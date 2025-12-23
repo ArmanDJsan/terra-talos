@@ -21,7 +21,7 @@ module "kubernetes" {
       server_type = "cpx21",
       size        = 3,
       location    = var.location,
-      type        = "cloud"
+      type        = "cpx21"
     }
   ]
 
@@ -32,7 +32,7 @@ module "kubernetes" {
       server_type = "cpx31",
       size        = 3,
       location    = var.location,
-      type        = "cloud"
+      type        = "cpx31"
     }
   ]
 }
