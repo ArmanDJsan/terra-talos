@@ -20,7 +20,8 @@ module "kubernetes" {
       name        = "master",
       server_type = "cpx21",
       size        = 3,
-      location    = var.location
+      location    = var.location,
+      type        = "cloud"
     }
   ]
 
@@ -30,7 +31,8 @@ module "kubernetes" {
       name        = "workers",
       server_type = "cpx31",
       size        = 3,
-      location    = var.location
+      location    = var.location,
+      type        = "cloud"
     }
   ]
 }
