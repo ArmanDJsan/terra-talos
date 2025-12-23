@@ -1,0 +1,17 @@
+# Binarios
+terraform.exe
+talosctl.exe
+
+# Terraform local
+.terraform/
+.terraform.lock.hcl
+
+# Secretos y Tokens (CRÍTICO)
+*.tfvars
+terraform.tfstate
+terraform.tfstate.backup
+
+# Configuraciones de acceso al clúster
+kubeconfig
+*.yaml
+*.yml
