@@ -1,10 +1,9 @@
 module "kubernetes" {
   source  = "hcloud-k8s/kubernetes/hcloud"
-  version = "1.3.0"
+  version = "3.16.0"
 
   # 1. Pasamos el token directamente al módulo
   hcloud_token = var.hcloud_token
-  
   cluster_name = var.cluster_name
 
   # 2. Versiones de software
@@ -35,4 +34,8 @@ module "kubernetes" {
       type        = "cpx31"
     }
   ]
+
+  # 6. Recomendación: Rutas de archivos para no perder el acceso
+  cluster_kubeconfig_path  = "kubeconfig"
+  cluster_talosconfig_path = "talosconfig"
 }
