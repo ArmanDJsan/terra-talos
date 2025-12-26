@@ -6,6 +6,8 @@ module "kubernetes" {
   hcloud_token = var.hcloud_token
   cluster_name = var.cluster_name
 
+  hcloud_ccm_load_balancers_location = var.location
+
   # 2. Versiones de software
   talos_version      = "v1.9.6"
   kubernetes_version = "1.31.1"
