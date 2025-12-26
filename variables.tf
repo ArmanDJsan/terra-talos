@@ -10,7 +10,7 @@ variable "talos_image_id" {
 }
 
 variable "cluster_name" {
-  default = "v1"
+  default = "v2"
 }
 
 variable "location" {
