@@ -5,19 +5,19 @@ module "kubernetes" {
   hcloud_token = var.hcloud_token
   cluster_name = var.cluster_name
 
-  # CAMBIO: Ahora pasamos un objeto en lugar de un string
   packer_amd64_builder = {
-    image_id = var.talos_image_id
+    image_id = "344281184" # Tu imagen original de Packer
   }
 
+  # ESTO EVITA QUE SE BLOQUEE EL BORRADO Y FUERZA LA CONFIGURACIÓN INMEDIATA
+  cluster_delete_protection              = false
+  talos_machine_configuration_apply_mode = "no-reboot"
+
   hcloud_ccm_load_balancers_location = var.location
+  talos_version                      = "v1.9.5"
+  kubernetes_version                 = "1.31.1"
+  network_ipv4_cidr                  = "10.0.0.0/16"
 
-  talos_version      = "v1.9.5"
-  kubernetes_version = "1.31.1"
-
-  network_ipv4_cidr = "10.0.0.0/16"
-
-  # Firewall usando los nombres exactos de tu grep
   firewall_talos_api_source = ["0.0.0.0/0"]
   firewall_kube_api_source  = ["0.0.0.0/0"]
 
