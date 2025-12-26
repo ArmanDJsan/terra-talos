@@ -11,7 +11,7 @@ module "kubernetes" {
 
   # ESTO EVITA QUE SE BLOQUEE EL BORRADO Y FUERZA LA CONFIGURACIÓN INMEDIATA
   cluster_delete_protection              = false
-  talos_machine_configuration_apply_mode = "no-reboot"
+  talos_machine_configuration_apply_mode = "no_reboot"
 
   hcloud_ccm_load_balancers_location = var.location
   talos_version                      = "v1.9.5"
