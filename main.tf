@@ -15,6 +15,12 @@ module "kubernetes" {
   # 3. Configuración de Red
   network_ipv4_cidr = "10.0.0.0/16"
 
+  # CLAVE 1: Permite que Terraform vea el puerto 50000 desde fuera
+  talos_api_allowed_networks = ["0.0.0.0/0"] 
+
+  # CLAVE 2: Asegura que el módulo use la arquitectura correcta para el User Data
+  talos_image_architecture = "amd64"
+
   # 4. Los Masters (CPX21)
   control_plane_nodepools = [
     {
