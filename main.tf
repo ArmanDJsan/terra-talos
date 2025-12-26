@@ -5,10 +5,10 @@ module "kubernetes" {
   # 1. Pasamos el token directamente al módulo
   hcloud_token = var.hcloud_token
   cluster_name = var.cluster_name
-  location     = var.location 
+  hcloud_location = var.location 
 
   # imagen talos
-  talos_image_id = var.talos_image_id
+  talos_image = var.talos_image_id
 
   hcloud_ccm_load_balancers_location = var.location
 
@@ -20,10 +20,7 @@ module "kubernetes" {
   network_ipv4_cidr = "10.0.0.0/16"
 
   # CLAVE 1: Permite que Terraform vea el puerto 50000 desde fuera
-  talos_api_allowed_networks = ["0.0.0.0/0"] 
-
-  # CLAVE 2: Asegura que el módulo use la arquitectura correcta para el User Data
-  talos_image_architecture = "amd64"
+  cluster_api_allowed_networks = ["0.0.0.0/0"] 
 
   # 4. Los Masters (CPX21)
   control_plane_nodepools = [
