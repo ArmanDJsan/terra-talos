@@ -5,11 +5,15 @@ module "kubernetes" {
   # 1. Pasamos el token directamente al módulo
   hcloud_token = var.hcloud_token
   cluster_name = var.cluster_name
+  location     = var.location 
+
+  # imagen talos
+  talos_image_id = var.talos_image_id
 
   hcloud_ccm_load_balancers_location = var.location
 
   # 2. Versiones de software
-  talos_version      = "v1.9.6"
+  talos_version      = "v1.9.5"
   kubernetes_version = "1.31.1"
 
   # 3. Configuración de Red
@@ -25,10 +29,9 @@ module "kubernetes" {
   control_plane_nodepools = [
     {
       name        = "master",
-      server_type = "cpx21",
-      size        = 3,
-      location    = var.location,
-      type        = "cpx21"
+      type        = "cpx21",
+      count        = 3,
+      location    = var.location
     }
   ]
 
@@ -36,10 +39,9 @@ module "kubernetes" {
   worker_nodepools = [
     {
       name        = "workers",
-      server_type = "cpx31",
-      size        = 3,
-      location    = var.location,
-      type        = "cpx31"
+      type        = "cpx31",
+      count        = 3,
+      location    = var.location
     }
   ]
 
